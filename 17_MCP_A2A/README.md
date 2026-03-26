@@ -1,28 +1,31 @@
-<p align = "center" draggable="false" ><img src="https://github.com/AI-Maker-Space/LLM-Dev-101/assets/37101144/d1343317-fa2f-41e1-8af1-1dbb18399719"
-     width="200px"
-     height="auto"/>
-</p>
 
-## <h1 align="center" id="heading">Session 17: Model Context Protocol (MCP) & Agent-to-Agent (A2A) Protocol</h1>
 
-| Session Sheet | Recording     | Slides        | Repo         | Homework      | Feedback       |
-|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| [MCP Servers & A2A](../00_Docs/Session_Sheets/17_MCP_Servers_and_A2A) |[Recording!](https://us02web.zoom.us/rec/share/_iJT-kZiYacyz23fjU3N7w7mZIUFJqGXV48RDqCkCY3avsmngKtzK0SNs0I7k74.xICq6NSv6l6GqAFU) <br> passcode: `fJ9tx4h.`| [Session 17 Slides](https://www.canva.com/design/DAG-ELapG4g/6vDMm63RBwKVsSZvheorVA/edit?utm_content=DAG-ELapG4g&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) | You are here! | [(Optional) Session 17 Assignment: MCP Servers & A2A](https://forms.gle/qtjQFfoEF8aykTWy5) | [Feedback 3/12](https://forms.gle/sJwD1a6LLn9NU9s48) |
+## # Session 17: Model Context Protocol (MCP) & Agent-to-Agent (A2A) Protocol
+
+
+| Session Sheet                                                         | Recording                                                                                                                                             | Slides                                                                                                                                                                             | Repo          | Homework                                                                                   | Feedback                                             |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
+| [MCP Servers & A2A](../00_Docs/Session_Sheets/17_MCP_Servers_and_A2A) | [Recording!](https://us02web.zoom.us/rec/share/_iJT-kZiYacyz23fjU3N7w7mZIUFJqGXV48RDqCkCY3avsmngKtzK0SNs0I7k74.xICq6NSv6l6GqAFU) passcode: `fJ9tx4h.` | [Session 17 Slides](https://www.canva.com/design/DAG-ELapG4g/6vDMm63RBwKVsSZvheorVA/edit?utm_content=DAG-ELapG4g&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) | You are here! | [(Optional) Session 17 Assignment: MCP Servers & A2A](https://forms.gle/qtjQFfoEF8aykTWy5) | [Feedback 3/12](https://forms.gle/sJwD1a6LLn9NU9s48) |
+
+
 ---
 
 ## 📚 Useful Resources
 
 **MCP (Model Context Protocol)**
+
 - [MCP Official Docs](https://modelcontextprotocol.io/) — Spec, tutorials, and guides
 - [MCP-UI](https://mcpui.dev/) — Official standard for interactive UI in MCP
 - [MCP Auth Guide (Auth0)](https://auth0.com/blog/mcp-specs-update-all-about-auth/) — Deep dive into MCP auth spec updates
 
 **A2A (Agent-to-Agent Protocol)**
+
 - [A2A Official Docs](https://a2a-protocol.org/latest/) — Spec and guides
 - [A2A GitHub Repo](https://github.com/a2aproject/A2A) — Protocol spec and implementations
 - [Announcing A2A (Google Blog)](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/) — Protocol vision and motivation
 
 **MCP vs A2A**
+
 - [A2A and MCP (Official)](https://a2a-protocol.org/latest/topics/a2a-and-mcp/) — How they complement each other
 
 ---
@@ -76,7 +79,6 @@ In today's assignment, we'll be building an MCP server with OAuth authentication
 - 🤝 Breakout Room #1
   - Set up the MCP server with OAuth and the product database
   - Explore the MCP tools: `list_products`, `get_product`, `add_to_cart`, `view_cart`, `remove_from_cart`, `checkout`
-
 - 🤝 Breakout Room #2
   - Connect an MCP client to the server
   - Build an end-to-end interaction flow using the MCP tools
@@ -139,7 +141,9 @@ Why is OAuth important for MCP servers, and what security considerations should 
 
 #### ✅ Answer:
 
-_(insert your answer here)_
+OAuth is important for MCP servers just like it is for any other software application in that it provides a way for applications to implement authorization and authentication as security measures. For example, in the old days, people could use a simple username and password combination to log into an application. The problem was that access to this one combination of username and password would grant immediate access to the application to any number of hackers who had the credentials. With OAuth in MCP, a token meant to be used by one service cannot be misues by another. MCP clients now implement Resource Indicators which state the intended recipient of the access token, meaning that even if the access token is stolen, the metada associated with that token would flag the access token as 'mis-redeemed' by a fradulent recipient. 
+
+Overall, AI clients create a new class of security concerns because LLMs are capable of reading, writing and manipulating text files and code dynamically and unpredictably. It is imperative that AI applications and MCP servers enforce security flows that take into account these dynamic capabilities. Leveraging metadata is a powerful way to guide application and security flow behavior as metadata sits on top of business logic code that LLMs typically run. 
 
 ### ❓ Question #2:
 
@@ -147,7 +151,9 @@ What is the Agent-to-Agent (A2A) protocol, and how does it differ from MCP in te
 
 #### ✅ Answer:
 
-_(insert your answer here)_
+A2A is an open standard (like REST and MCP) that defines how agents can interact with other agents! In an era where all sorts of people are developing their own agents for all sorts of purposes, it is usefl to have an agreed-upon way for agents to communicate with one another. A2A facilitates this communication while focusing on the following: Interoperability: communication standards that allow cross-platform functionality; Complex Workflows: ability for multiple agents to work together to achieve a larger task; and Security and Opactiy: Agent-to-agent communication that doesn't require sharing of internal memroy, tools or proprietary logic. 
+
+A2A focuses on agent-to-agent communication, while MCP focuses on agent-to-tool communication. This means that architecturally, developers would implement A2A for their agents to communicate with agents from other organizations and implement MCP to connect tools to their agents within their own organizations. In other words, A2A can be thought of more as an 'external' interface to outside agents while MCP is a standard for 'internal' interfaces to tools necessary for the agent to do its job. 
 
 ## Activity 1: Extend the MCP Server
 
