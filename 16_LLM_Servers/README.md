@@ -1,13 +1,12 @@
-<p align = "center" draggable="false" ><img src="https://github.com/AI-Maker-Space/LLM-Dev-101/assets/37101144/d1343317-fa2f-41e1-8af1-1dbb18399719"
-     width="200px"
-     height="auto"/>
-</p>
 
-## <h1 align="center" id="heading">Session 16: LLM Servers</h1>
 
-| 📰 Session Sheet                                  | ⏺️ Recording                           | 🖼️ Slides                                   | 👨‍💻 Repo       | 📝 Homework                                              | 📁 Feedback                        |
-| ------------------------------------------------- | -------------------------------------- | ------------------------------------------- | ------------- | -------------------------------------------------------- | ---------------------------------- |
-| [LLM Servers](../00_Docs/Session_Sheets/16_LLM_Servers) |[Recording!](https://us02web.zoom.us/rec/share/HDunij9p7eCXeP_OgsRDRjTdWUqiEhDBGWrFJEn1bwWR1wz1jKX6EHXSOM45d0sC.rHiyo_znZ-R8Jh6S) <br> passcode: `D80X^YjL`| [Session 16 Slides](https://www.canva.com/design/DAG-EBu7B5A/POcowC5rDLENSPcSVpbf8g/edit?utm_content=DAG-EBu7B5A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) | You are here! | [Session 16 Assignment: LLM Servers](https://forms.gle/Riqvwf6KrZcCRKV86) <br><br> [Demo Day Submission (3/12)](https://forms.gle/7xyuBUn69GX4v6K98)  | [Feedback 3/5](https://forms.gle/W28QFWJXpSS4ZAR6A) |
+## # Session 16: LLM Servers
+
+
+| 📰 Session Sheet                                        | ⏺️ Recording                                                                                                                                           | 🖼️ Slides                                                                                                                                                                         | 👨‍💻 Repo    | 📝 Homework                                                                                                                                 | 📁 Feedback                                         |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| [LLM Servers](../00_Docs/Session_Sheets/16_LLM_Servers) | [Recording!](https://us02web.zoom.us/rec/share/HDunij9p7eCXeP_OgsRDRjTdWUqiEhDBGWrFJEn1bwWR1wz1jKX6EHXSOM45d0sC.rHiyo_znZ-R8Jh6S) passcode: `D80X^YjL` | [Session 16 Slides](https://www.canva.com/design/DAG-EBu7B5A/POcowC5rDLENSPcSVpbf8g/edit?utm_content=DAG-EBu7B5A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) | You are here! | [Session 16 Assignment: LLM Servers](https://forms.gle/Riqvwf6KrZcCRKV86) [Demo Day Submission (3/12)](https://forms.gle/7xyuBUn69GX4v6K98) | [Feedback 3/5](https://forms.gle/W28QFWJXpSS4ZAR6A) |
+
 
 **⚠️!!! PLEASE BE SURE TO SHUTDOWN YOUR DEDICATED ENDPOINT ON FIREWORKS AI WHEN YOU'RE FINISHED YOUR ASSIGNMENT !!!⚠️**
 
@@ -18,7 +17,6 @@ In today's assignment, we'll be creating Fireworks AI endpoints, and then buildi
 - 🤝 Breakout Room #1
   - Set-up Open Source Endpoint (Instructions [here](./ENDPOINT_SETUP.md)) ((This process may take 15-20min.))
   - Test Endpoint and Embeddings with the `endpoint_slammer.ipynb` notebook.
-
 - 🤝 Breakout Room #2
   - Use the Open Source Endpoints to build a RAG LangGraph application
 
@@ -83,7 +81,9 @@ What is the difference between serverless and dedicated endpoints?
 
 #### ✅ Answer:
 
-_(insert your answer here)_
+Serverless endpoints  typically mean that the underlying resources driving that endpoint are shared with other serverless endpoints. This means that a set amount of compute isn't necessarily set apart at all times for this enpoint. Rather, a certain amount of compute and resources is carved out for the endpoint at runtime when the resources are requested. This is useful if the client doesn't want to be paying for resources that they aren't using and don't need around the clock. 
+
+On the other hand, dedicated endpoints carve out a specific amount of compute and resources on a guaranteed basis. This is useful if the client is building an application that they know will require a certain amount of dedicated compute at all times. 
 
 ### ❓ Question #2:
 
@@ -91,7 +91,7 @@ Why is it important to consider token throughput and latency when choosing an LL
 
 #### ✅ Answer:
 
-_(insert your answer here)_
+Token throughput and latency are important when choosing an LLM for user-facing applications because they directly affect the user experience when interacting with the application. Slow responses from the LLM degrade the experience and make it feel more clunky, whereas tight response-times from the LLM make the user feel that the application is alive and ready to handle their requests. LLM applications are distnct from regular software applications in that they provide natural language as an interface for requesting and receiving services from the application. This means that just as humans expect responsiveness from other humans when requesting services, they also expect the same from human-like LLM service apps. Responsiveness is directly impacted by token throughput and latency, so these metrics are important to consider when choosing LLMs to serve the applications.
 
 ## Activity 1: RAGAS Evaluation with Cost Analysis
 
